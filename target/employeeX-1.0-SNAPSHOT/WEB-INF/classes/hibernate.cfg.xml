@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/employeex</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.connection.autocommit">true</property>
+        <property name="show_sql">true</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Mapping files -->
+        <mapping class="employees.Person" />
+        <mapping class="employees.Role" />
+        <mapping class="employees.Company" />
+        <mapping class="employees.Department" />
+        <mapping class="employees.Position" />
+        <mapping class="employees.LighthouseReward" />
+        <mapping class="employees.Schedule" />
+        <mapping class="employees.PersonalCar" />
+        <mapping class="employees.PersonalChild" />
+
+    </session-factory>
+</hibernate-configuration>
