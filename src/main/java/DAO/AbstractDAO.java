@@ -1,6 +1,5 @@
 package DAO;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 public abstract class AbstractDAO<E, K> {
 
     public abstract E getEntityById(Long id);
-    public abstract Collection<E> getAll();
+    public abstract Collection<E> getAllEntities();
 
     public abstract E update(E entity);
     public abstract boolean delete(K id);

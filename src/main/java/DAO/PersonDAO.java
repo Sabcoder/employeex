@@ -1,15 +1,18 @@
 package DAO;
 
 import configuration.HibernateConnect;
+import employees.Company;
 import employees.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -45,18 +48,18 @@ public class PersonDAO extends AbstractDAO {
         return person;
     }
 
-
-
-    public Collection getAll() {
+    public Collection<Person> getAllEntities() {
         Session session = null;
         Collection people = null;
         try {
             session = HibernateConnect.getSessionFactory().openSession();
             session.beginTransaction();
+
             CriteriaQuery<Person> criteriaQuery = session.getCriteriaBuilder().createQuery(Person.class);
             Root<Person> personRoot = criteriaQuery.from(Person.class);
             criteriaQuery.select(personRoot);
             people = session.createQuery(criteriaQuery).getResultList();
+
             session.getTransaction().commit();
         } catch (Throwable ex) {
             session.getTransaction().rollback();
@@ -69,6 +72,34 @@ public class PersonDAO extends AbstractDAO {
         }
         return people;
     }
+
+
+
+    public Collection<Person> getByCompany(Company company) {
+        Session session = null;
+        Collection<Person> people = null;
+
+        try {
+            session = HibernateConnect.getSessionFactory().openSession();
+            session.beginTransaction();
+
+            String hql = "select p from Company c join c.people p where c.id = :company_id";
+            Query query = session.createQuery(hql);
+            query.setParameter("company_id", company.getId());
+            people = query.getResultList();
+
+            session.getTransaction().commit();
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return people;
+    }
+
+
 
 
 
@@ -103,4 +134,5 @@ public class PersonDAO extends AbstractDAO {
     public boolean create(Object entity) {
         return false;
     }
+
 }

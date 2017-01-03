@@ -145,4 +145,10 @@ public class Company extends DataModel {
         this.people = people;
     }
 
+
+    @Override
+    public String toString() {
+        return String.format("ID: %s - %s (%s) Brand: %s",
+                this.getId(), this.getFullBrandName(), this.getLegalName(), this.getBrand());
+    }
 }
