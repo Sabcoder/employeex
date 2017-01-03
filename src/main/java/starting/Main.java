@@ -13,7 +13,7 @@ import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 import java.sql.PreparedStatement;
 import java.util.Collection;
-import java.util.Iterator;git config --global user.email "Ваш Email"
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -23,20 +23,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SessionFactory sessionFactory = HibernateConnect.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        List<Person> result = null;
-        Person singlePerson = null;
-        String text = null;
-
-        try {
-            session.beginTransaction();
-            result = (List) Factory.getInstance().getPersonDAO().getAll();
-            Iterator iterator = result.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-            }
-
+        Person person;
+        person = Factory.getInstance().getPersonDAO().getEntityById(2L);
+        System.out.println(person);
 
             /*
             CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -69,17 +58,5 @@ public class Main {
             session.save(newEmp);
             */
 
-
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-            sessionFactory.close();
-        }
-
-
     }
-
 }

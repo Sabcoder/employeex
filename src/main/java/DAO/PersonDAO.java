@@ -3,7 +3,9 @@ package DAO;
 import configuration.HibernateConnect;
 import employees.Person;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.sql.SQLException;
@@ -16,34 +18,19 @@ import java.util.List;
 public class PersonDAO extends AbstractDAO {
 
 
-    public void addPerson(Person person) throws SQLException {
-        Session session = null;
-        try {
-            session = HibernateConnect.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.save(person);
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            session.getTransaction().rollback();
-            e.getMessage();
-            e.printStackTrace();
-        } finally {
-            if (session != null && session.isOpen()) {
-                session.close();
-            }
-        }
-    }
-
-
-
     public Person getEntityById(Long id) {
         Session session = null;
         Person person = null;
         try {
             session = HibernateConnect.getSessionFactory().openSession();
             session.beginTransaction();
-            person = session.load(Person.class, id);
 
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Person> query = cb.createQuery(Person.class);
+            Root<Person> personRoot = query.from(Person.class);
+            query.select(personRoot);
+            query.where(cb.equal(personRoot.get("id"), id));
+            person = session.createQuery(query).getSingleResult();
 
             session.getTransaction().commit();
         } catch (Throwable ex) {
@@ -81,6 +68,26 @@ public class PersonDAO extends AbstractDAO {
             }
         }
         return people;
+    }
+
+
+
+    public void addPerson(Person person) throws SQLException {
+        Session session = null;
+        try {
+            session = HibernateConnect.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.save(person);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+            e.getMessage();
+            e.printStackTrace();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
     }
 
 
