@@ -2,12 +2,16 @@ employees/DataModel.class
 employees/PersonalCar.class
 servlets/MyServlet.class
 employees/Person.class
+DAO/CompanyDAO.class
 employees/Company.class
+DAO/Factory.class
 employees/LighthouseTypes.class
 employees/Schedule.class
+DAO/PersonDAO.class
 employees/LighthouseReward.class
 employees/Department.class
 employees/PersonalChild.class
+DAO/AbstractDAO.class
 employees/Role.class
 configuration/HibernateConnect.class
 employees/Position.class

@@ -19,7 +19,8 @@ ${projectName}
 
 <div>
     <h2>Список сотрудников:</h2>
-    ${peopleList}
+    ${employeeList}
+
 </div>
 
 </body>

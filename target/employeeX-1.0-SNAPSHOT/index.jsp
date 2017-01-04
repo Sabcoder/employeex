@@ -8,16 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Стартовая страница</title>
+    <title>EmployeeX</title>
 </head>
 <body>
 
 ${greetings}
 ${projectName}
 
+
+
 <div>
     <h2>Список сотрудников:</h2>
-    ${peopleList}
+    ${employeeList}
+
 </div>
 
 </body>

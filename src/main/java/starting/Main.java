@@ -28,10 +28,19 @@ public class Main {
 
 
         Company company;
-        company = Factory.getInstance().getCompanyDAO().getEntityById(2L);
-        System.out.println(company);
+        company = Factory.getInstance().getCompanyDAO().getEntityById(1L);
 
-        System.out.println("================================");
+        Person newEmp = new Person();
+        newEmp.setLeaderId("4");
+        newEmp.setFirstName("Anastasiia");
+        newEmp.setLastName("Philippova");
+        newEmp.setPassword("123456");
+        newEmp.setInternalPhoneNumber("11199");
+        newEmp.getCompanies().add(company);
+
+//        Factory.getInstance().getPersonDAO().addPerson(newEmp);
+
+
 
         List<Person> people;
         people = (List<Person>) Factory.getInstance().getPersonDAO().getByCompany(company);
@@ -40,36 +49,7 @@ public class Main {
         }
 
 
-            /*
-            CriteriaBuilder cb = session.getCriteriaBuilder();
 
-            // SELECT
-            CriteriaQuery<Person> criteria = cb.createQuery(Person.class);
-            Root<Person> personRoot = criteria.from(Person.class);
-            criteria.select(personRoot);
-            criteria.orderBy(cb.asc(personRoot.get("id")));
-            result = session.createQuery(criteria).getResultList();
-            criteria.where(cb.equal(personRoot.get("id"), "1"));
-            text = session.createQuery(criteria).getSingleResult().getAddress();
-
-            // UPDATE
-            CriteriaUpdate criteriaUpdate = cb.createCriteriaUpdate(Person.class);
-            Root employee = criteriaUpdate.from(Person.class);
-            criteriaUpdate.set("address", "Томилино, улица Гаршина 9А");
-            criteriaUpdate.where(cb.equal(employee.get("id"), "1"));
-            Query query = session.createQuery(criteriaUpdate);
-            query.executeUpdate();
-
-            // INSERT
-            Person newEmp = new Person();
-            newEmp.setLeaderId("1");
-            newEmp.setFirstName("Василий");
-            newEmp.setFirstName("Василий");
-            newEmp.setLastName("Астахов");
-            newEmp.setId(3L);
-            newEmp.setPassword("dwdw");
-            session.save(newEmp);
-            */
 
     }
 }

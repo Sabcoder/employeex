@@ -2,13 +2,17 @@
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/Company.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/configuration/HibernateConnect.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/Position.java
+/Users/nikita/IdeaProjects/com.employeex/src/main/java/DAO/AbstractDAO.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/starting/Main.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/LighthouseReward.java
+/Users/nikita/IdeaProjects/com.employeex/src/main/java/DAO/CompanyDAO.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/DataModel.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/Department.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/Person.java
+/Users/nikita/IdeaProjects/com.employeex/src/main/java/DAO/Factory.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/Role.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/servlets/MyServlet.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/PersonalChild.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/PersonalCar.java
+/Users/nikita/IdeaProjects/com.employeex/src/main/java/DAO/PersonDAO.java
 /Users/nikita/IdeaProjects/com.employeex/src/main/java/employees/Schedule.java
